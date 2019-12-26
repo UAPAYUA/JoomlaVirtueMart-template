@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="plugin" group="vmpayment" method="upgrade">
+    <name>UaPay</name>
+    <creationDate>2019</creationDate>
+    <author>UaPay</author>
+    <authorUrl>https://uapay.com/</authorUrl>
+    <copyright></copyright>
+    <license></license>
+    <version>1.0</version>
+    <description>UaPay payment plugin</description>
+
+    <files>
+        <filename plugin="uapay">uapay.php</filename>
+        <folder>language</folder>
+        <folder>uapay</folder>
+        <filename>UaPayApi.php</filename>
+    </files>
+
+    <vmconfig>
+        <fields name="params">
+            <fieldset name="top" label="VMPAYMENT_UAPAY_TOP_LABEL">
+                <field name="CLIENT_ID"  type="password" size="50" label="CLIENT_ID" description="CLIENT_ID UAPAY" default="" />
+                <field name="SECRET_KEY"  type="password" size="50" label="SECRET_KEY" description="SECRET_KEY UAPAY" default="" />
+                <!-- new -->
+                <field name="TEST_MODE"  type="checkbox" label="TEST_MODE" description="TEST_MODE" default="" />
+                <field name="TYPE_PAYMENT"  type="checkbox" label="TYPE_PAYMENT" description="TYPE_PAYMENT_DESC" default="" />
+                <field name="REDIRECT_URL" type="text" size="50" label="REDIRECT_URL" description="REDIRECT_URL UAPAY" default="" />
+                <!-- new -->
+            </fieldset>
+
+            <fieldset name="template">
+                <field name="payment_logos" type="vmfiles" multiple="false" directory="/images/virtuemart/payment"
+                       hide_none="1" label="VMPAYMENT_UAPAY_LOGO"
+                       size="40"
+                       description="VMPAYMENT_UAPAY_LOGO_DESC"
+                       default=""
+                />
+            </fieldset>
+
+            <fieldset name="middle" label="" description="" addfieldpath="/administrator/components/com_virtuemart/fields">
+                <field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C"
+                       label="VMPAYMENT_UAPAY_STATUS_SUCCESS_LABEL"
+                       description=""
+                />
+                <!-- new -->
+                <field name="status_auth" type="vmorderstate" scope="com_virtuemart" default="P"
+                       label="VMPAYMENT_UAPAY_STATUS_AUTH_LABEL"
+                       description=""
+                />
+                <field name="status_refund" type="vmorderstate" scope="com_virtuemart" default="R"
+                       label="VMPAYMENT_UAPAY_STATUS_REFUND_LABEL"
+                       description=""
+                />
+                <!-- new -->
+                <field name="status_failed" type="vmorderstate" scope="com_virtuemart" default="X"
+                       label="VMPAYMENT_UAPAY_STATUS_FAILED_LABEL"
+                       description=""
+                />
+                <field name="countries" type="vmcountries" scope="com_virtuemart" default="" multiple="true"
+                       label="VMPAYMENT_UAPAY_COUNTRIES"
+                       description="VMPAYMENT_UAPAY_COUNTRIES_DESC"
+                />
+            </fieldset>
+        </fields>
+    </vmconfig>
+</extension>
